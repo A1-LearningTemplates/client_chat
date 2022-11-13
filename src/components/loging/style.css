@@ -1,0 +1,161 @@
+.form_container {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background: rgb(58, 147, 25);
+  background: linear-gradient(
+    342deg,
+    rgba(44, 193, 123, 0.283) 0%,
+    rgba(87, 221, 158, 0.668) 35%,
+    #ffffff 50%
+  );
+}
+
+.form_box {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 0 2rem;
+  width: 50%;
+  margin: 0 auto;
+}
+form .input_one,
+.input_two {
+  width: 90%;
+  padding: 1rem 0.5rem;
+  border: none;
+  background-color: inherit;
+  box-shadow: 0 0 0 5px #48ebe03b;
+  border-radius: 3px;
+  font-size: 1rem;
+  transition: box-shadow 0.5s;
+}
+.input_one:focus,
+.input_two:focus {
+  outline: none;
+  box-shadow: 0 0 0 5px #38fff2c2;
+}
+form .btn {
+  transition: box-shadow 0.5s;
+  padding: 1rem;
+  width: 50%;
+  border: none;
+  background-color: inherit;
+  box-shadow: 0 0 0 5px #48ebe03b;
+  cursor: pointer;
+  border-radius: 3px;
+  font-size: 1rem;
+  color: rgb(43, 113, 114);
+  text-shadow: 0px 0px 1px black;
+}
+form .btn:hover {
+  box-shadow: 0 0 0 5px #38fff2c2;
+}
+input::placeholder {
+  color: rgb(43, 113, 114);
+  text-shadow: 0px 0px 1px black;
+}
+.input_one {
+  animation: inputOne 1s ease-out;
+}
+.input_two {
+  animation: inputTwo 1s ease-out;
+}
+.btn {
+  animation: button 1s ease-out 0.5s forwards;
+  transform: translateX(1000px);
+}
+.header {
+  animation: header 1s ease-out;
+  color: rgb(43, 113, 114);
+  text-shadow: 0px 0px 1px black;
+}
+.paragraph {
+  animation: paragraph 1s ease-out;
+  width: 90%;
+  font-size: 0.9rem;
+  letter-spacing: 1.5px;
+  text-shadow: 0 0 1px #2b7172d7;
+  color: #2b7172d7;
+}
+@keyframes inputOne {
+  0% {
+    transform: translateX(1000px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes inputTwo {
+  0% {
+    transform: translateX(-1000px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes button {
+  0% {
+    transform: translateX(1000px);
+  }
+  70% {
+    transform: translateX(-20px);
+  }
+  90% {
+    transform: translateX(20px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes header {
+  0% {
+    transform: translateY(-1000px);
+  }
+  25% {
+    transform: scaleY(0.7) translateY(0px);
+  }
+  30% {
+    transform: scaleY(0.6) translateY(0px);
+  }
+  40% {
+    transform:  scaleY(0.5) translateY(0px);
+  }
+  45% {
+    transform: translateY(-7px) scaleY(0.6);
+  }
+  50% {
+    transform: translateY(-15px) scaleY(0.7);
+  }
+  55% {
+    transform: translateY(-20px) scaleY(0.9);
+  }
+  60% {
+    transform: translateY(-40px) scaleY(1);
+  }
+  70% {
+    transform: translateY(-40px) scaleY(1.2);
+  }
+  80% {
+    transform: scaleY(1) translateY(0);
+  }
+  90% {
+    transform: scaleY(0.8) translateY(0);
+  }
+  100% {
+    transform: translateY(0);
+    transform: scaleY(1);
+  }
+}
+@keyframes paragraph {
+  0% {
+    transform: translateY(1000px);
+  }
+  100% {
+    color: black;
+    transform: translateY(0);
+  }
+}
