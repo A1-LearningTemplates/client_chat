@@ -18,7 +18,7 @@ const Chat = ({ setIsLogedIn, data }) => {
   const [chatBox, setChatBox] = useState("");
   const [typing, setTyping] = useState(false);
   const [socket, setsocket] = useState(
-    io("https://chat-me-iqiy.onrender.com:3001/chat", {
+    io("https://chat-me-iqiy.onrender.com", {
       query: {
         userName: data.userName,
         _id: data._id,
@@ -126,11 +126,14 @@ const Chat = ({ setIsLogedIn, data }) => {
       return;
     }
     try {
-      const res = await axios.put(`https://chat-me-iqiy.onrender.com/conversation`, {
-        person: user.id,
-        user_id: data.id,
-        socket_ids: [socket.id, user.socket],
-      });
+      const res = await axios.put(
+        `https://chat-me-iqiy.onrender.com/conversation`,
+        {
+          person: user.id,
+          user_id: data.id,
+          socket_ids: [socket.id, user.socket],
+        }
+      );
 
       if (res.data.success) {
         const person = {
@@ -168,11 +171,14 @@ const Chat = ({ setIsLogedIn, data }) => {
    */
   const createMessage = async (message) => {
     try {
-      const res = await axios.post(`https://chat-me-iqiy.onrender.com/message/`, {
-        message,
-        sender: data._id,
-        receiver: chatBox._id,
-      });
+      const res = await axios.post(
+        `https://chat-me-iqiy.onrender.com/message/`,
+        {
+          message,
+          sender: data._id,
+          receiver: chatBox._id,
+        }
+      );
       if (res) {
       }
     } catch (error) {
