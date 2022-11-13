@@ -18,7 +18,7 @@ const Chat = ({ setIsLogedIn, data }) => {
   const [chatBox, setChatBox] = useState("");
   const [typing, setTyping] = useState(false);
   const [socket, setsocket] = useState(
-    io("https://chat-me-iqiy.onrender.com", {
+    io("https://chat-me-iqiy.onrender.com/chat", {
       query: {
         userName: data.userName,
         _id: data._id,
@@ -65,7 +65,7 @@ const Chat = ({ setIsLogedIn, data }) => {
         const person = {
           person: data.person.person,
         };
-        setConversation([...conversation, person]);
+        setConversation([...conversation, data]);
       }
     });
   }, [conversation]);
@@ -117,7 +117,7 @@ const Chat = ({ setIsLogedIn, data }) => {
    */
   const updateConversation = async (user) => {
     const existed = conversation.find((elem) => {
-      return elem.person._id === user._id;
+      return elem?.person._id === user._id;
     });
 
     if (existed) {
@@ -126,12 +126,12 @@ const Chat = ({ setIsLogedIn, data }) => {
       return;
     }
     try {
+      console.log(user._id,data._id);
       const res = await axios.put(
         `https://chat-me-iqiy.onrender.com/conversation`,
         {
-          person: user.id,
-          user_id: data.id,
-          socket_ids: [socket.id, user.socket],
+          person: user._id,
+          user_id: data._id,
         }
       );
 
@@ -139,7 +139,7 @@ const Chat = ({ setIsLogedIn, data }) => {
         const person = {
           person: res.data.data,
         };
-
+        socket.emit("send_conv", { person: person, socket_id: user.socket });
         setConversation([...conversation, person]);
       }
     } catch (error) {
