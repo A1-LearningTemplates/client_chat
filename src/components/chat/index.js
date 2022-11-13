@@ -18,7 +18,7 @@ const Chat = ({ setIsLogedIn, data }) => {
   const [chatBox, setChatBox] = useState("");
   const [typing, setTyping] = useState(false);
   const [socket, setsocket] = useState(
-    io("https://chat-me-iqiy.onrender.com/chat", {
+    io("https://chat-me-iqiy.onrender.com:3001/chat", {
       query: {
         userName: data.userName,
         _id: data._id,
